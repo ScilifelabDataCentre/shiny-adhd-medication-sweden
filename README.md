@@ -10,7 +10,7 @@ The dashboard is built using [R](https://www.r-project.org/) with [Shiny](https:
 
 The underlying data is in a CSV file, located in the same folder as the dashboard code (`/app/`).
 
-In addition, this repository contains commands to build an image with the app code and data (see `Dockerfile` for settings) and to push to DockerHub through GitHub actions (see `.github/workflows/docker-image.yml` for settings). On DockerHub this image can be found under `scilifelabdatacentre/adhd-medication-sweden`.
+In addition, this repository contains commands to build an image with the app code and data (see `Dockerfile` for settings) and to push to DockerHub through GitHub actions (see `.github/workflows/docker-image.yml` for settings). On DockerHub this image can be found under `scilifelabdatacentre/shiny-adhd-medication-sweden`.
 
 ## Contributing
 
