@@ -6,16 +6,16 @@ The live dashboard can be found here: [adhd-medication-sweden.serve.scilifelab.s
 
 ## How the dashboard is built
 
-The dashboard is built using [R](https://www.r-project.org/) with [Shiny](https://shiny.rstudio.com/), and [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html) packages. The code of the Shiny app can be found at `/app/app.R`; the app can be run locally e.g. using RStudio.
+The dashboard is built using [R](https://www.r-project.org/) with [Shiny](https://shiny.rstudio.com/) and [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html) packages. The code of the Shiny app can be found at `/app/app.R`; the app can be run locally e.g. using RStudio.
 
 The underlying data is in a CSV file, located in the same folder as the dashboard code (`/app/`).
 
-In addition, this repository contains commands to build an image with the app code and data (see `Dockerfile` for settings) and to push to DockerHub through GitHub actions (see `.github/workflows/docker-image.yml` for settings). On DockerHub this image can be found under `akochari/adhd-medication-sweden`.
+In addition, this repository contains commands to build an image with the app code and data (see `Dockerfile` for settings) and to push to DockerHub through GitHub actions (see `.github/workflows/docker-image.yml` for settings). On DockerHub this image can be found under `scilifelabdatacentre/adhd-medication-sweden`.
 
 ## Contributing
 
 Suggestions and contributions are welcome. If you found a mistake or would like to make a suggestion, please create an issue in this repository. Those who wish are also welcome to submit pull requests.
 
-## Authors
+## Contact
 
 This dashboard was built by [@akochari](http://github.com/akochari/).
