@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    if: github.repository == 'akochari/adhd-medication-sweden'
+    if: github.repository == 'scilifelabdatacentre/shiny-adhd-medication-sweden'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Publish to Docker Hub
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: akochari/adhd-medication-sweden
+          name: scilifelabdatacentre/shiny-adhd-medication-sweden
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           dockerfile: Dockerfile
