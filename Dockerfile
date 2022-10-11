@@ -8,11 +8,13 @@ RUN apt-get update && \
 
 RUN Rscript -e 'install.packages(c("shiny","tidyverse"))'
 
-COPY /app/ /app/
+COPY /app/ /srv/shiny-server/app 
 
-RUN cd /app/ && \
-    sudo chown -R shiny:shiny /app/
+RUN cd /srv/shiny-server/ && \
+    sudo chown -R shiny:shiny /srv/shiny-server/app
+
+COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('/app/', host = '0.0.0.0', port = 3838)"]
+CMD ["/usr/bin/shiny-server"]
