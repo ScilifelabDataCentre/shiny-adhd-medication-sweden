@@ -3,4 +3,5 @@
 
 # backups
 *~
+!shiny-customized.config
 \#*\#
