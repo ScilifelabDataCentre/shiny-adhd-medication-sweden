@@ -6,7 +6,11 @@ RUN apt-get update && \
     apt-get install -y git libxml2-dev libmagick++-dev && \
     rm -rf /var/lib/apt/lists/*
 
-RUN Rscript -e 'install.packages(c("shiny","tidyverse"))'
+# Command to install standard R packages from CRAN; enter the list of required packages for your app here
+RUN Rscript -e 'install.packages(c("shiny","tidyverse","BiocManager"))'
+
+# Command to install packages from Bioconductor; enter the list of required Bioconductor packages for your app here
+RUN Rscript -e 'BiocManager::install(c("Biostrings"),ask = F)'
 
 COPY /app/ /srv/shiny-server/app 
 
