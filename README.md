@@ -1,4 +1,4 @@
-# ADHD medication collection among girls and boys (0-19 year olds) in Sweden over time
+# ADHD medication collection among girls and boys (0-19 year olds) in Sweden over time 
 
 Dashboard plotting the number of people in Sweden aged 0-19 who have have filled a prescription for ADHD medication each year. The dashboard is based on open data from the *The Swedish National Board of Health and Welfare* (*Socialstyrelsen*). Specifically, the data has been extracted from the [Statistikdatabas för läkemedel](https://sdb.socialstyrelsen.se/if_lak/val.aspx) where data about all medications that have been bought/given based on a prescription in Sweden since 2006 are available.
 
