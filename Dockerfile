@@ -17,8 +17,6 @@ COPY /app/ /srv/shiny-server/app
 RUN cd /srv/shiny-server/ && \
     sudo chown -R shiny:shiny /srv/shiny-server/app
 
-COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
-
 EXPOSE 3838
 
 CMD ["/usr/bin/shiny-server"]
