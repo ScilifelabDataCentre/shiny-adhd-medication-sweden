@@ -12,10 +12,10 @@ RUN Rscript -e 'install.packages(c("shiny","tidyverse","BiocManager"))'
 # Command to install packages from Bioconductor; enter the list of required Bioconductor packages for your app here
 RUN Rscript -e 'BiocManager::install(c("Biostrings"),ask = F)'
 
-COPY /app/ /srv/shiny-server/app 
+RUN rm -rf /srv/shiny-server/*
+COPY /app/* /srv/shiny-server/
 
-RUN cd /srv/shiny-server/ && \
-    sudo chown -R shiny:shiny /srv/shiny-server/app
+USER shiny
 
 EXPOSE 3838
 
