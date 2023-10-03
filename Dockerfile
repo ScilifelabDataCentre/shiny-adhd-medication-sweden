@@ -2,8 +2,8 @@ FROM rocker/shiny:latest
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get clean && \
     apt-get install -y git libxml2-dev libmagick++-dev && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Command to install standard R packages from CRAN; enter the list of required packages for your app here
