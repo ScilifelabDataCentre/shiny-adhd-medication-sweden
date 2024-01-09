@@ -13,7 +13,7 @@ RUN Rscript -e 'install.packages(c("shiny","tidyverse","BiocManager"))'
 RUN Rscript -e 'BiocManager::install(c("Biostrings"),ask = F)'
 
 RUN rm -rf /srv/shiny-server/*
-COPY /app/* /srv/shiny-server/
+COPY /app/ /srv/shiny-server/
 
 USER shiny
 
