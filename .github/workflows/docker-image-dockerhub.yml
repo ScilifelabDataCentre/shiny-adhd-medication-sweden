@@ -10,12 +10,13 @@ jobs:
     if: github.repository == 'scilifelabdatacentre/shiny-adhd-medication-sweden'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Set date and time as tag
+        id: set_tag
+        run: echo "TAG=$(TZ="Europe/Stockholm" date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+      - name: Build Docker image
+        run: docker build -t scilifelabdatacentre/shiny-adhd-medication-sweden:$TAG -f Dockerfile .
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Publish to Docker Hub
-        uses: elgohr/Publish-Docker-Github-Action@v5
-        with:
-          name: scilifelabdatacentre/shiny-adhd-medication-sweden
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          dockerfile: Dockerfile
-          tags: "latest"
+        run: docker push scilifelabdatacentre/shiny-adhd-medication-sweden:$TAG
