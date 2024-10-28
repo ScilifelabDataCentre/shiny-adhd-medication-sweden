@@ -7,7 +7,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Command to install standard R packages from CRAN; enter the list of required packages for your app here
-RUN Rscript -e 'install.packages(c("shiny","tidyverse","BiocManager"))'
+RUN Rscript -e 'install.packages(c("shiny","tidyverse","BiocManager"), dependencies = TRUE)'
 
 # Command to install packages from Bioconductor; enter the list of required Bioconductor packages for your app here
 RUN Rscript -e 'BiocManager::install(c("Biostrings"),ask = F)'
