@@ -1,6 +1,6 @@
 #
 # This is a R Shiny dashboard exploring ADHD medication collection among 0-19 year olds in Sweden. The dashboard is based on data from Socialstyrelsen.
-# GitHub repository: https://github.com/akochari/adhd-medication-sweden
+# GitHub repository: https://github.com/scilifelabdatacentre/adhd-medication-sweden
 #
 
 library(shiny)
@@ -61,14 +61,14 @@ ui <- fluidPage(
                                        "Västra Götaland County" = 'Västra Götalands län'),
                         selected = 'Riket'),
             sliderInput("year", h4("Years to display"),
-                        min = 2006, max = 2020, sep = "", value = c(2006, 2020))
+                        min = 2006, max = 2023, sep = "", value = c(2006, 2023))
         ),
 
         # Show the plot
         mainPanel(
            plotOutput("medicationsPlot"),
            column(12, p("The graph shows the number of patients aged 0-19 per 1000 inhabitants aged 0-19 who have at least once during the year filled an ADHD medication prescription in Sweden. The number displayed at the end of the lines (e.g., 'x7', seven times higher) indicates the change between the first and the last year for which data is available."),
-                      HTML("<p>Currently, there are five ADHD medication active ingredients <a href='www.lakemedelsverket.se/adhd'>approved for use in Sweden</a>. Three of these are central nervous system stimulants - metylfenidat, dexamfetamin and lisdexamfetamin. Two of these are not central stimulants - atomoxetin and guanfacin. Data can be displayed separately for each of them. Note that these are names of active ingredients but they may be sold under different brand names.</p>")),
+                      HTML("<p>Currently, there are five ADHD medication active ingredients <a target='_blank' href='https://lakemedelsverket.se/adhd'>approved for use in Sweden</a>. Three of these are central nervous system stimulants - metylfenidat, dexamfetamin and lisdexamfetamin. Two of these are not central stimulants - atomoxetin and guanfacin. Data can be displayed separately for each of them. Note that these are names of active ingredients but they may be sold under different brand names.</p>")),
            column(12, HTML("<p style='font-size: 0.9em;color:gray;'>*Please note that in the plot showing <i>all</i> active ingredients together the number of patients is simply a sum of patients which have filled prescription for each of the active ingredients. Therefore, if a patient has filled a prescription for more than one type of ADHD medication during the same year, they would be counted more than once. This means that the actual number of patients may be lower than the one displayed in this summed number. Different active ingredients are often tried when starting ADHD medication to find out which one is working best or needing to switch to another medication for some reason, so this does occur. This is not an issue when looking at each active ingredient separately.</p>"))
         ),
     ),
@@ -77,9 +77,9 @@ ui <- fluidPage(
     fluidRow(
       column(12,
              h3("Data behind this dashboard", style = "margin-top: 30px;"),
-             HTML("<p>The graph in this dashboard is based on open data from the <i>The Swedish National Board of Health and Welfare</i> (<i>Socialstyrelsen</i>). Specifically, the data has been extracted from the <a href='https://sdb.socialstyrelsen.se/if_lak/val.aspx'>Statistikdatabas för läkemedel</a> where data about all medications that have been bought/given based on a prescription in Sweden since 2006 are available.</p>"),
+             HTML("<p>The graph in this dashboard is based on open data from the <i>The Swedish National Board of Health and Welfare</i> (<i>Socialstyrelsen</i>). Specifically, the data has been extracted from the <a target='_blank' href='https://sdb.socialstyrelsen.se/if_lak/val.aspx'>Statistikdatabas för läkemedel</a> where data about all medications that have been bought/given based on a prescription in Sweden since 2006 are available.</p>"),
              h3("Code behind this dashboard"),
-             HTML("<p>This dashboard is built using <a href='https://shiny.rstudio.com/'>R Shiny</a>. The data and code behind this dashboard <a href='https://github.com/akochari/adhd-medication-sweden'>are available on GitHub</a> (MIT license). Feel free to contribute to this dashboard by sending a pull request on GitHub or re-use the code for your own dashboards. If you have any suggestions or questions, you are welcome to start an issue on GitHub.</p>"),
+             HTML("<p>This dashboard is built using <a target='_blank' href='https://shiny.rstudio.com/'>R Shiny</a>. The data and code behind this dashboard <a target='_blank' href='https://github.com/akochari/adhd-medication-sweden'>are available on GitHub</a> (MIT license). Feel free to contribute to this dashboard by sending a pull request on GitHub or re-use the code for your own dashboards. If you have any suggestions or questions, you are welcome to start an issue on GitHub.</p>"),
              h3("References"),
              HTML("<ol>
                   <li>'Under-diagnosed and under-treated, girls with ADHD face distinct risks', 2020-04-17. Retrieved from https://knowablemagazine.org/article/mind/2020/adhd-in-girls-and-women</li>
@@ -98,7 +98,7 @@ server <- function(input, output) {
 
     output$medicationsPlot <- renderPlot({
         # load the data file
-        adhd_medication <- read_delim("socialstyrelsen_2022-02-18.csv",
+        adhd_medication <- read_delim("socialstyrelsen_2025-01-09.csv",
                                   delim = ";", escape_double = FALSE, 
                                   col_types = cols(År = col_integer()),
                                   locale = locale(decimal_mark = ","), 
