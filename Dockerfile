@@ -1,5 +1,5 @@
 # Base image
-FROM rocker/shiny:4.4.1
+FROM rocker/shiny:4.6.1
 
 # General updates
 RUN apt-get update && \
