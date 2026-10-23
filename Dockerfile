@@ -3,9 +3,17 @@ FROM rocker/shiny:4.6.1
 
 # General updates
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git libxml2-dev libmagick++-dev libssl-dev libharfbuzz-dev libfribidi-dev && \
-    apt-get clean && \
+    apt-get install -y --no-install-recommends \
+        git \
+        curl \
+        ca-certificates \
+        libuv1t64 \
+        libuv1-dev \
+        libxml2-dev \
+        libmagick++-dev \
+        libssl-dev \
+        libharfbuzz-dev \
+        libfribidi-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Install the required packages
